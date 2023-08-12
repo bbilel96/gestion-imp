@@ -1,0 +1,27 @@
+server:
+  port: 8051
+  error:
+    include-message: always
+  servlet:
+    context-path: /classe
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: classe
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: create-drop
+        format_sql: true
+    generate-ddl: true
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/classe?serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: root
+    password:
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+

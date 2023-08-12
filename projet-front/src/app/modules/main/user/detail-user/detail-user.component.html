@@ -1,0 +1,19 @@
+<p-messages></p-messages>
+
+
+<app-update-user [userId]="userId"></app-update-user>
+<div  *ngIf="displayIfEnseignant() && dispalyIfAgent()"class="card">
+
+<p-tabView (onChange)="handelTabViewChange($event)">
+  <p-tabPanel  *ngIf="displayIfEnseignant()" header="Les matière enseigner par ce enseignant" >
+    <app-list-matiere [enseignantId]="userId" [index]="index"> </app-list-matiere>
+  </p-tabPanel>
+  <p-tabPanel *ngIf="dispalyIfAgent()" header="Matière imprimer par cet agent">
+    <app-list-matiere [index]="index" [agentId]="userId"></app-list-matiere>
+  </p-tabPanel>
+
+
+</p-tabView>
+
+</div>
+

@@ -1,0 +1,107 @@
+<p-messages></p-messages>
+<div  *ngIf="fileStatus.status==='progress'">
+
+  <p-progressBar  [value]="fileStatus.percent"></p-progressBar>
+
+</div>
+<h5>Detail demande de tirage.</h5>
+
+
+
+
+<form (ngSubmit)="onSubmit()" [formGroup]="editTirageForm">
+  <div class="grid">
+
+    <div class="p-field col-12 lg:col-6 xl:col-6 ">
+      <label class="mb-2" for="id" style="display: block">Numero de tirage</label>
+
+      <input
+        [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'id').length != 0}"
+        class="w-full" [(ngModel)]="selectedTirage.id" formControlName="id" id="id" pInputText placeholder="Numero tirage"
+        type="text"/>
+      <small *ngFor="let error of validation.inputError(responseMessage.validations, 'id')" class="p-error block"
+             id="id-error">
+        {{error.errorMessage}}
+      </small>
+    </div>
+
+    <div class="p-field col-12 lg:col-6 xl:col-6 ">
+      <label class="mb-2"  style="display: block">Choisir une matiere</label>
+
+      <p-dropdown  [(ngModel)]="selectedTirage.matiereDto" (onChange)="miseAJourClasse($event)" [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'matiereId').length != 0}" placeholder="Selectionner une matière" optionLabel="nom" formControlName="matiereDto" [options]="affectedMatiere" ></p-dropdown>
+      <small *ngFor="let error of validation.inputError(responseMessage.validations, 'matiereId')" class="p-error block"
+             id="type-error">
+        {{error.errorMessage}}
+      </small>
+    </div>
+    <div class="p-field col-12 lg:col-6 xl:col-6 ">
+      <label class="mb-2"  style="display: block">Choisir une classe </label>
+
+      <p-dropdown   [(ngModel)]="selectedTirage.classeDto" [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'classeId').length != 0}" [options]="affectClasse" placeholder="Selectionner une classe" optionLabel="nom" formControlName="classeDto" ></p-dropdown>
+      <small *ngFor="let error of validation.inputError(responseMessage.validations, 'classeId')" class="p-error block"
+             id="classe-error">
+        {{error.errorMessage}}
+      </small>
+    </div>
+
+    <div class="p-field col-12 lg:col-6 xl:col-6  ">
+      <label class="mb-2" for="nom" style="display: block">Nombre  de copie</label>
+
+      <input  [(ngModel)]="selectedTirage.nbTirage" class="w-full" formControlName="nbTirage" id="nom" pInputText placeholder="Nombre de copie" type="text" [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'nbTirage').length != 0}"/>
+      <small *ngFor="let error of validation.inputError(responseMessage.validations, 'nbTirage')" class="p-error block"
+             id="email-error">
+        {{error.errorMessage}}
+      </small>
+    </div>
+    <div class="p-field col-12 lg:col-6 xl:col-6 ">
+
+      <label class="mb-2" for="dateNasiss" style="display: block">Date impression</label>
+      <p-calendar placeholder="Date de tirage" [(ngModel)]="selectedTirage.dateImpression" formControlName= "dateImpression" [showTime]="true" dateFormat="mm-dd-yy" class="w-full" id="dateNasiss"  [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'dateImpression').length != 0}" inputId="dateformat"></p-calendar>
+      <small *ngFor="let error of validation.inputError(responseMessage.validations, 'dateImpression')" class="p-error block"
+             id="date-error">
+        {{error.errorMessage}}
+      </small>
+    </div>
+    <div class="p-field col-12 lg:col-6 xl:col-6 ">
+      <label class="mb-2"  style="display: block">Status</label>
+
+      <p-dropdown  [(ngModel)]="selectedTirage.status" [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'status').length != 0}"  formControlName="status" [options]="tirageType" ></p-dropdown>
+      <small *ngFor="let error of validation.inputError(responseMessage.validations, 'status')" class="p-error block"
+             id="type1-error">
+        {{error.errorMessage}}
+      </small>
+    </div>
+  </div>
+
+
+  <div class="grid">
+    <div class="p-field col-12  ">
+      <label class="mb-2" for="dateNasiss" style="display: block">Fichier </label>
+      <p-fileUpload chooseLabel="Choisir un fichier"  uploadLabel="Téléchargement" [disabled] ="disableTirage" (onUpload)="onDownloadFile($event)" (onSelect)="onSelect($event)" (onRemove)="onRemove($event)" [showUploadButton]="false" cancelLabel= "Annuler" >
+        <ng-template pTemplate="toolbar">
+          <button   type="button" label="Télécharger" (click)="onDownloadFile(selectedTirage.documentPdf)" pButton></button>
+        </ng-template>
+          <ng-template pTemplate="content">
+          <ul>
+            <li> {{selectedTirage.documentPdf}} </li>
+          </ul>
+        </ng-template>
+      </p-fileUpload>
+      <small *ngFor="let error of validation.inputError(responseMessage.validations, 'dateNaissance')" class="p-error block"
+             id="ficher-error">
+        {{error.errorMessage}}
+      </small>
+    </div>
+
+  </div>
+
+  <div class="grid mt-3">
+    <div class=" col-12  md:col-3 lg:col-2 col-offset-0 md:col-offset-9 lg:col-offset-10 lg:px-2">
+      <button type="submit" [disabled]="checkIfUpdateButtonShouldBeDisabled()" class="w-full" label="Modifier" pButton></button>
+    </div>
+  </div>
+
+</form>
+
+
+

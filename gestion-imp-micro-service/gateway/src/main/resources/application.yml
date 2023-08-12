@@ -1,0 +1,81 @@
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+  instance:
+      hostname: localhost
+management:
+  endpoint.gateway.enabled: true
+  endpoints.web.exposure.include: gateway
+server:
+  port: 9000
+spring:
+  mvc:
+    dispatch-options-request: true
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery.locator.enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+              - PATCH
+            allowedHeaders:
+              - "Origin"
+              - "Access-Control-Allow-Origin"
+              - "Content-Type"
+              - "Accept"
+              - "Authorization"
+              - "Origin, Accept"
+              - "X-Requested-With"
+              - "Access-Control-Request-Method"
+              - "Access-Control-Request-Headers"
+              - "Credentials"
+            exposed-headers:
+              - "Origin"
+              - "Content-Type"
+              - "Accept"
+              - "Authorization"
+              - "Access-Control-Request-Credentials"
+              - "Access-Control-Allow-Origin"
+
+
+      routes:
+        - id: personne-service-auth
+          uri: lb://personne
+          predicates:
+            - Path=/personne/auth/**
+        - id: personne-service
+          uri: lb://personne
+          predicates:
+            - Path=/personne/utilisateur/**, /personne/enseignant/**, /personne/admin/**, /personne/agent/**
+          filters:
+            - AuthFilter
+        - id: classe-service
+          uri: lb://classe
+          predicates:
+            - Path=/classe/**
+          filters:
+            - AuthFilter
+        - id: tirage-service
+          uri: lb://tirage
+          predicates:
+          - Path=/tirage/**
+          filters:
+            - AuthFilter
+

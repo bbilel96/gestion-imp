@@ -1,0 +1,112 @@
+<div class="card">
+  <h5>Detail du Utilisateur</h5>
+  <form (ngSubmit)="onSubmit()" [formGroup]="editUser">
+    <div class="grid">
+      <div class="p-field col-12 lg:col-6 xl:col-6 ">
+        <label class="mb-2" for="id" style="display: block">Numero d'utilisateur</label>
+
+        <input
+          [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'nom').length != 0}"
+          class="w-full" [(ngModel)]="foundedUser.id" formControlName="id" id="id" pInputText placeholder="Cin d'utilisateur'"
+          type="text"/>
+        <small *ngFor="let error of validation.inputError(responseMessage.validations, 'cin')" class="p-error block"
+               id="id-error">
+          {{error.errorMessage}}
+        </small>
+      </div>
+    </div>
+    <div class="grid">
+
+      <div class="p-field col-12 lg:col-6 xl:col-6 ">
+        <label class="mb-2" for="cin" style="display: block">Cin d'utilisateur</label>
+
+        <input
+          [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'nom').length != 0}"
+          class="w-full" [(ngModel)]="foundedUser.cin" formControlName="cin" id="cin" pInputText placeholder="Cin d'utilisateur'"
+          type="text"/>
+        <small *ngFor="let error of validation.inputError(responseMessage.validations, 'cin')" class="p-error block"
+               id="cin-error">
+          {{error.errorMessage}}
+        </small>
+      </div>
+      <div class="p-field col-12 lg:col-6 xl:col-6 ">
+        <label class="mb-2" for="nom" style="display: block">Nom d'utilisateur</label>
+
+        <input
+          [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'nom').length != 0}"
+          class="w-full" [(ngModel)]="foundedUser.nom" formControlName="nom" id="nom" pInputText placeholder=">Nom d'utilisateur"
+          type="text"/>
+        <small *ngFor="let error of validation.inputError(responseMessage.validations, 'nom')" class="p-error block"
+               id="nom-error">
+          {{error.errorMessage}}
+        </small>
+      </div>
+      <div class="p-field col-12 lg:col-6 xl:col-6 ">
+        <label class="mb-2" for="nom" style="display: block">Prenom d'utilisateur</label>
+
+        <input
+          [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'prenom').length != 0}"
+          class="w-full" [(ngModel)]="foundedUser.prenom" formControlName="prenom" id="prenom" pInputText placeholder="Prenom d'utilisateur"
+          type="text"/>
+        <small *ngFor="let error of validation.inputError(responseMessage.validations, 'nom')" class="p-error block"
+               id="prenom-error">
+          {{error.errorMessage}}
+        </small>
+      </div>
+      <div class="p-field col-12 lg:col-6 xl:col-6 ">
+        <label class="mb-2" for="email" style="display: block">Email d'utilisateur</label>
+
+        <input
+          [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'nom').length != 0}"
+          class="w-full" [(ngModel)]="foundedUser.email" formControlName="email" id="email" pInputText placeholder="Email d'utilisateur"
+          type="text"/>
+        <small *ngFor="let error of validation.inputError(responseMessage.validations, 'email')" class="p-error block"
+               id="email-error">
+          {{error.errorMessage}}
+        </small>
+      </div>
+      <div class="p-field col-12 lg:col-6 xl:col-6 ">
+
+        <label class="mb-2" for="dateNasiss" style="display: block">Date naissance</label>
+        <p-calendar  [(ngModel)]="foundedUser.dateNaissance" placeholder="Date de naissance" formControlName= "dateNaissance" dateFormat="mm-dd-yy" class="w-full" id="dateNasiss"  [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'dateNaissance').length != 0}"inputId="dateformat"></p-calendar>
+        <small *ngFor="let error of validation.inputError(responseMessage.validations, 'dateNaissance')" class="p-error block"
+               id="date-error">
+          {{error.errorMessage}}
+        </small>
+      </div>
+      <div class="p-field col-12 lg:col-6 xl:col-6 ">
+        <label class="mb-2" for="password" style="display: block">Mot de passe d'utilisateur</label>
+
+        <input
+          [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'password').length != 0}"
+          class="w-full" [(ngModel)]="foundedUser.password" formControlName="password" id="password" pInputText placeholder="Mot de passe d'utilisateur"
+          type="password"/>
+        <small *ngFor="let error of validation.inputError(responseMessage.validations, 'nom')" class="p-error block"
+               id="password-error">
+          {{error.errorMessage}}
+        </small>
+      </div>
+      <div class="p-field col-12 lg:col-6 xl:col-6 ">
+        <label class="mb-2" for="tel" style="display: block">Numero telephone d'utilisateur</label>
+
+        <input
+          [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'nom').length != 0}"
+          class="w-full" [(ngModel)]="foundedUser.numTel" formControlName="numTel" id="tel" pInputText placeholder="Numero telephone d'utilisateur"
+          type="text"/>
+        <small *ngFor="let error of validation.inputError(responseMessage.validations, 'numTel')" class="p-error block"
+               id="numTel-error">
+          {{error.errorMessage}}
+        </small>
+      </div>
+
+
+    </div>
+    <div class="grid mt-3">
+      <div class=" col-12  md:col-3 lg:col-2 col-offset-0 md:col-offset-9 lg:col-offset-10 lg:px-2">
+        <button [disabled]="submitButton" class="w-full" label="Modifier" pButton></button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

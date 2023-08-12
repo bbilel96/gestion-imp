@@ -1,0 +1,38 @@
+.layout-main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  padding: 4rem 2rem 2rem 1rem;
+  transition: margin-left $transitionDuration;
+}
+
+.layout-main {
+  flex: 1 1 auto;
+}
+.header{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: .25rem 0;
+  .title{
+    margin: 0;
+  }
+}
+.content-component{
+  .content-component-header{
+    margin-bottom: 2rem;
+    .title{
+      margin-left: 1rem;
+    }
+    .p-breadcrumb{
+      padding-left: 2rem;
+    }
+  }
+}
+
+.container-form.flex{
+  align-items: center;
+  justify-content: center;
+}

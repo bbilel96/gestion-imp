@@ -1,0 +1,28 @@
+.p-datatable {
+  .p-datatable-tbody {
+    > tr {
+      > td {
+        padding: 0 0.75rem !important;
+      }
+    }
+  }
+}
+
+.p-datatable-scrollable {
+  .p-datatable-thead {
+    tr {
+      th, .p-datatable-scrollable .p-datatable-tbody {
+        tr {
+          td, .p-datatable-scrollable .p-datatable-tfoot > tr > td {
+            justify-content: space-evenly !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.p-datatable-scrollable .p-datatable-thead > tr > th, .p-datatable-scrollable .p-datatable-tbody > tr > td, .p-datatable-scrollable .p-datatable-tfoot > tr > td {
+  justify-content: space-evenly !important;
+
+}

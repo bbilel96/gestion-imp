@@ -1,0 +1,21 @@
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.align-items-end {
+  align-items: end;
+}
+.justify-content-end {
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-container {
+  .p-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,40 @@
+.container {
+  padding: 0 1.5rem;
+
+  .footer.flex-row {
+    justify-content: end;
+    align-items: center;
+  }
+
+  height: 100%;
+}
+
+@include phone {
+  .container {
+    padding: 0;
+  }
+}
+
+.form-container {
+  height: 100%;
+  padding: 0 1.5rem;
+
+  flex-direction: column;
+  justify-content: start;
+  display: flex;
+
+  .footer-form {
+    display: flex;
+
+    justify-content: end;
+    align-items: center;
+    margin: auto 0 0 0;
+
+    .footer.flex-row {
+      justify-content: end;
+      align-items: center;
+    }
+  }
+
+  height: 100%;
+}

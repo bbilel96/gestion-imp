@@ -1,0 +1,14 @@
+<form (ngSubmit)="submit()" [formGroup]="affecterMatiereForm">
+  <div class="grid">
+    <div class="p-field col-12 ">
+      <label class="mb-2" for="matieres" style="display: block">Choisir les Matières</label>
+      <p-multiSelect formControlName="matieres" id="matieres" [(ngModel)]="affectedMatiere" [options]="listMatieres" defaultLabel="Choisir les matieres" optionLabel="nom" display="chip"></p-multiSelect>
+    </div>
+  </div>
+  <div class="grid mt-3">
+    <div class=" col-12  md:col-3 lg:col-2 col-offset-0 md:col-offset-9 lg:col-offset-10 lg:px-2">
+      <button class="w-full" label="Affecter" [disabled]="loading" pButton></button>
+    </div>
+  </div>
+</form>
+

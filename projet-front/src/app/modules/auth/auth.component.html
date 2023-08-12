@@ -1,0 +1,38 @@
+<div class="container auth-card" style="z-index: 1002">
+  <p-card [style]="{'width': '35rem', 'margin-bottom': '2em'}">
+
+    <main class="main" style="margin-top: 50px;">
+      <p-messages></p-messages>
+
+      <header>
+        <h2 class="auth-title">Login</h2>
+        <p class="auth-sub-title">Please enter your email and password to know who you are.</p>
+      </header>
+      <form (ngSubmit)="submit()" [formGroup]="login">
+        <div class="p-field w-100">
+          <label for="email" style="display: block">Email</label>
+          <span class="p-input-icon-left w-full">
+        <i class="pi pi-envelope"></i>
+        <input id="email" type="text" formControlName="email" placeholder="Your email" class="w-full" pInputText/>
+    </span>
+          <small id="email-error" class="p-error block"></small>
+        </div>
+        <div class="p-field w-100">
+          <label for="password" style="display: block">Password</label>
+          <span class="p-input-icon-left w-full">
+        <i class="pi pi-lock"></i>
+        <input id="password" type="password" formControlName="password" placeholder="Your password" class="w-full" pInputText/>
+    </span>
+          <small id="password-error" class="p-error block"></small>
+        </div>
+        <div class="footer">
+      <span routerLink="../signup">
+        You don't have account?
+      </span>
+        </div>
+        <button pButton type="submit" class="w-full" label="Log in" ></button>
+      </form>
+    </main>
+  </p-card>
+
+</div>

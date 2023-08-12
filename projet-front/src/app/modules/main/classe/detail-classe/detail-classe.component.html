@@ -1,0 +1,55 @@
+<p-messages></p-messages>
+<h5>Detail du classe</h5>
+<form (ngSubmit)="submit()" [formGroup]="editClasseForm">
+<div class="grid">
+
+
+  <div class="p-field col-12 lg:col-6 xl:col-6 ">
+    <label class="mb-2" for="nom" style="display: block">Numero du classe </label>
+
+    <input formControlName="id" [(ngModel)]="classe.id"  class="w-full" id="id" pInputText placeholder="Nom du classe" type="text" [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'id').length != 0}"/>
+    <small *ngFor="let error of validation.inputError(responseMessage.validations, 'id')" class="p-error block"
+           id="id-error">
+      {{error.errorMessage}}
+    </small>
+
+  </div>
+  <div class="p-field col-12 lg:col-6 xl:col-6 ">
+    <label class="mb-2" for="nom" style="display: block">Nom du classe</label>
+
+    <input formControlName="nom" [(ngModel)]="classe.nom" class="w-full" id="nom" pInputText placeholder="Nom du classe" type="text" [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'nom').length != 0}" />
+    <small *ngFor="let error of validation.inputError(responseMessage.validations, 'nom')" class="p-error block"
+           id="nom-error">
+      {{error.errorMessage}}
+    </small>
+  </div>
+  <div class="p-field col-12 lg:col-6 xl:col-6 ">
+    <label class="mb-2" for="nbEtudiant" style="display: block">Nombre d'etudiants</label>
+
+    <input formControlName="nbEtudiant" [(ngModel)]="classe.nbEtudiant" class="w-full" id="nbEtudiant" pInputText placeholder="Nombre d'etudiants" type="text" [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'nbEtudiant').length != 0}" />
+    <small *ngFor="let error of validation.inputError(responseMessage.validations, 'nbEtudiant')" class="p-error block"
+           id="nbEtudiant-error">
+      {{error.errorMessage}}
+    </small>
+  </div>
+
+</div>
+  <div class="grid mt-3">
+    <div class=" col-12  md:col-3 lg:col-2 col-offset-0 md:col-offset-9 lg:col-offset-10 lg:px-2">
+      <button class="w-full" label="Modifier" [disabled]="loading" pButton></button>
+    </div>
+  </div>
+</form>
+
+
+<p-tabView (onChange)="handelTabViewChange($event)">
+  <p-tabPanel header="Les Matières affecter dans cette classe" >
+    <app-list-matiere  [classeId]=this.classeId [index]="index"></app-list-matiere>
+  </p-tabPanel>
+  <p-tabPanel *ngIf="displayIfAdmin()" header="Affecter Classe" >
+    <app-affect-matiere  [index]="index"></app-affect-matiere>
+  </p-tabPanel>
+
+
+</p-tabView>
+

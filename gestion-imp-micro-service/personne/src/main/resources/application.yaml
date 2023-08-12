@@ -1,0 +1,26 @@
+server:
+  port: 8060
+  error:
+    include-message: always
+  servlet:
+    context-path: /personne
+spring:
+  application:
+    name: personne
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: update
+        format_sql: true
+    generate-ddl: true
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/personne?serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: root
+    password:
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+  instance:
+    hostname: localhost

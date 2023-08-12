@@ -1,0 +1,29 @@
+<div class="layout-menu">
+  <div class="layout-header flex align-content-start mx-4 my-4" >
+
+      <img src="./assets/img/logo.png" class="logo-img" alt="" height="26" width="26">
+
+      <span class="logo text-center">GestionTirage</span>
+
+
+  </div>
+  <div class="layout-menu-container my-4">
+    <ul class="layout-menu" role="menu" (keydown)="onKeydown($event)">
+      <li class="layout-menuitem-category" *ngFor="let item of model; let i = index;" role="none">
+
+        <div class="layout-menuitem-root-text" [attr.aria-label]="item.label">
+          <span class="menu-item-title">
+            {{item.label}}
+          </span>
+        </div>
+        <ul role="menu">
+          <li *ngFor="let child of item.items" role="none">
+            <app-menu-iteam [item]="child" [index]="i"></app-menu-iteam>
+          </li>
+        </ul>
+      </li>
+      <a href="https://www.primefaces.org/primeblocks-ng/#/">
+      </a>
+    </ul>
+  </div>
+</div>

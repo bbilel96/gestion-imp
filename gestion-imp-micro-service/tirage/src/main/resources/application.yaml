@@ -1,0 +1,32 @@
+server:
+  port: 8070
+  error:
+    include-message: always
+  servlet:
+    context-path: /tirage
+spring:
+  application:
+    name: tirage
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: create-drop
+        format_sql: true
+    generate-ddl: true
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/tirage?serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: root
+    password:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+file:
+  path: tirage/src/main/resources/pdf
+
+

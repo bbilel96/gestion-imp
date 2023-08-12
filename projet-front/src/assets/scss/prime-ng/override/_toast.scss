@@ -1,0 +1,13 @@
+@import "src/assets/scss/layouts/declaration";
+
+@include phone {
+  .p-toast {
+    width: 20rem !important;
+  }
+
+}
+
+
+
+
+

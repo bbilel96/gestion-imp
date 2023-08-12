@@ -1,0 +1,27 @@
+<div class="card">
+  <p-messages ></p-messages>
+  <h5>Ajouter une nouvelle classe</h5>
+  <form (ngSubmit)="onSubmit()" [formGroup]="addMatiere">
+    <div class="grid">
+
+
+      <div class="p-field col-12 lg:col-6 xl:col-5 ">
+        <label class="mb-2" for="nom" style="display: block">Nom de matiere</label>
+
+        <input class="w-full" formControlName="nom" id="nom" pInputText placeholder="Nom de matiere" type="text" [ngClass]="{ 'ng-invalid ng-dirty': validation.inputError(responseMessage.validations, 'nom').length != 0}"/>
+        <small *ngFor="let error of validation.inputError(responseMessage.validations, 'nom')" class="p-error block"
+               id="email-error">
+          {{error.errorMessage}}
+        </small>
+      </div>
+
+    </div>
+    <div class="grid mt-3">
+      <div class=" col-12  md:col-3 lg:col-2 col-offset-0 md:col-offset-9 lg:col-offset-10 lg:px-2">
+        <button class="w-full" label="Ajouter" [disabled]="submitButton" pButton></button>
+      </div>
+    </div>
+
+  </form>
+</div>
+

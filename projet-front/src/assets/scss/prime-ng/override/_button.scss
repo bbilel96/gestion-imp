@@ -1,0 +1,56 @@
+@import "src/assets/scss/layouts/declaration";
+
+.p-button:disabled {
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+.p-button.p-button-text {
+  background-color: transparent;
+  color: $primary-color;
+  border-color: transparent;
+}
+
+.p-button:enabled:focus {
+  background: $primary-color-rgba-button;
+}
+
+.p-button.p-button-text:enabled:hover {
+  background: rgba(63, 81, 181, 0.04);
+  color: $primary-color-rgba-button;
+  border-color: transparent;
+}
+
+.p-button:enabled:hover {
+  background: $primary-color-rgba-button;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.p-button {
+
+  justify-content: center;
+  color: #ffffff;
+  background: $primary-color;
+  border: 0 none;
+  padding: 0.643rem 0.75rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  border-radius: 4px;
+
+}
+
+.p-button-label {
+  flex: none !important;
+}
+
+.p-button-rounded {
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+}
+
+.p-button.p-button-text {
+  background-color: transparent;
+  color: $primary-color;
+  border-color: transparent;
+}
+

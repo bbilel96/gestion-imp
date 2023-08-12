@@ -1,0 +1,39 @@
+<div class="flex justify-content-between align-items-center mb-3">
+  <h5>Liste des matieres</h5>
+
+  <div *ngIf="checkIfAdmin() && index != 0">
+    <button pButton type="button" label="Nouveau" (click)="navigate()"></button>
+  </div>
+</div>
+<ng-container *ngIf="classeId == undefined && enseignantId == undefined">
+<p-messages ></p-messages>
+</ng-container>
+  <p-table class="pt-6" [value]="listMatiere" [loading]="loading" [lazy]="true" selectionMode="single" [scrollable]="true"
+           scrollHeight="300px" [resizableColumns]="true"
+           styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pResizableColumn>#Numero</th>
+        <th pResizableColumn>Nom</th>
+        <th pResizableColumn *ngIf="checkAdmin()">Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-matiere>
+      <tr (dblclick)="details(matiere.id)" style="cursor: pointer">
+        <td>{{matiere.id}}</td>
+        <td>{{matiere.nom}}</td>
+        <td *ngIf="checkAdmin()" class="flex align-items-center justify-content-center">
+          <button (click)="delete(matiere.id)" class="p-button-rounded p-button-danger p-button-text" icon="pi pi-trash" pButton pRipple
+                  type="button"></button>
+        </td>
+
+      </tr>
+    </ng-template>
+
+  </p-table>
+  <br>
+  <p-paginator  [rows]="5" [totalRecords]="totalElements" [showPageLinks]="true" [showJumpToPageDropdown]="true"
+                (onPageChange)="paginate($event)" [rowsPerPageOptions]="[5,10,15,20,25,30]"></p-paginator>
+
+
+

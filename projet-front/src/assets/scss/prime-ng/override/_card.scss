@@ -1,0 +1,25 @@
+@import "src/assets/scss/layouts/declaration";
+
+p-card {
+  .p-card.p-component {
+    .p-card-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 .5rem !important;
+      border-bottom: 2px solid whitesmoke;
+
+      .title {
+        margin: 0;
+        padding: 0.643rem;
+
+      }
+
+
+    }
+  }
+}
+.p-card .p-card-content {
+  padding: 0 1rem;
+}
